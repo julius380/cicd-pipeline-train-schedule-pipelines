@@ -4,7 +4,9 @@ pipeline {
     stage ('Build') {
       steps {
         echo "Building the build via gradle"
-        sh "./gradlew build"
-        archiveArtifacts artifact: 'dist/trainSchedule.zip', fingerprint: true 
+        sh "./gradlew build --no-daemon"
+        archiveArtifacts artifacts: 'dist/trainSchedule.zip', fingerprint: true 
       }
     }
+  }
+}
